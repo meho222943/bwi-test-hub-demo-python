@@ -14,7 +14,7 @@ timeout:
   durationSeconds: 300
 reportArtifacts:
   - kind: html-report
-    path: report/index.html
+    path: report
     description: unittest HTML report
   - kind: junit-xml
     path: report/junit.xml
