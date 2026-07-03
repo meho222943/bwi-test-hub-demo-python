@@ -1,16 +1,17 @@
-# Python + unittest demo for the BWI Test Hub.
-# No runtime profile ⇒ runs as a host process (DIRECT_PROCESS), needs
-# only python3 — no container runtime required.
+# Python + unittest demo for the BWI Test Hub — CONTAINER execution.
+# Declares a runtime PROFILE (never a raw image): the hub maps the
+# profile to an approved image in its runner-image catalog. No
+# environment.inherit — the container image provides PATH/HOME itself
+# (inheriting the host PATH would override the image's PATH).
 version: 1
 name: python-unittest-demo
 command:
   argv: ["python3", "run.py"]
-# Deny-by-default environment: inherit PATH so python3 resolves on any
-# runner, not just where it happens to sit in the default PATH.
-environment:
-  inherit: ["PATH"]
+runtime:
+  profile: python-3
+  required: true
 timeout:
-  durationSeconds: 120
+  durationSeconds: 300
 reportArtifacts:
   - kind: html-report
     path: report/index.html
