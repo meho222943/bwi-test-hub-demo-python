@@ -5,6 +5,10 @@ version: 1
 name: python-unittest-demo
 command:
   argv: ["python3", "run.py"]
+# Deny-by-default environment: inherit PATH so python3 resolves on any
+# runner, not just where it happens to sit in the default PATH.
+environment:
+  inherit: ["PATH"]
 timeout:
   durationSeconds: 120
 reportArtifacts:
