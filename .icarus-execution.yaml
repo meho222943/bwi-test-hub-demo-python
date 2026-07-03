@@ -1,0 +1,16 @@
+# Python + unittest demo for the BWI Test Hub.
+# No runtime profile ⇒ runs as a host process (DIRECT_PROCESS), needs
+# only python3 — no container runtime required.
+version: 1
+name: python-unittest-demo
+command:
+  argv: ["python3", "run.py"]
+timeout:
+  durationSeconds: 120
+reportArtifacts:
+  - kind: html-report
+    path: report/index.html
+    description: unittest HTML report
+  - kind: junit-xml
+    path: report/junit.xml
+    description: JUnit results
